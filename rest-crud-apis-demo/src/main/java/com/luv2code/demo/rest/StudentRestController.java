@@ -3,6 +3,7 @@ package com.luv2code.demo.rest;
 import com.luv2code.demo.entity.Student;
 import jakarta.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,5 +33,12 @@ public class StudentRestController {
         loadData();
 
         return theStudents;
+    }
+
+    // define endpoint or "/students/{studentId}" - return student at index
+    @GetMapping("/students/{studentId}")
+    public Student getStudent(@PathVariable int studentId) {
+        // index into the list
+        return theStudents.get(studentId);
     }
 }
